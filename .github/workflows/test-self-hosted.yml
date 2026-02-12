@@ -1,0 +1,25 @@
+name: Test Self-Hosted Runner
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Vérification du runner
+        run: echo "Ce job s'exécute sur le self-hosted runner !"
+
+      - name: Informations sur la machine
+        run: |
+          echo "Runner OK"
+          hostname
+          whoami
+          pwd
+          uname -a
+          cat /etc/os-release 2>/dev/null || echo "Pas d'info distribution"
